@@ -128,7 +128,7 @@ export default function PageBuilder({ page, site }) {
     return (
         <div className=''>
       
-          <TitleBlock page={page} />
+          {/* <TitleBlock page={page} /> */}
  
 
 
@@ -151,6 +151,7 @@ export default function PageBuilder({ page, site }) {
                             cta2_link={c.cta2_link}
                             image_link={c.image_url}
                             page={page}
+                            index={index}
                         />
                         {engagementBlocks && engagementBlocks.map(eb => (
                             <EngagementBlock key ={eb.id} engagementBlock={eb} />
