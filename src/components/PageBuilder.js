@@ -135,12 +135,13 @@ export default function PageBuilder({ page, site }) {
             {page.content_blocks.map((c, index) => {
                 let engagementBlocks = getEngagementBlock(index);
                 console.log(index, engagementBlocks);
-                let commonDiv = (Component, SecondComponent, secondComponentProps) => (
+                let commonDiv = (Component, SecondComponent, secondComponentProps, firstComponentProps) => (
 
 
                     <div className={"scroll-mt-16"}  key={c.id} id={c.order}>
 
                         <Component
+                            {...firstComponentProps}
                             contentBlockId={c.id}
                             header={c.header}
                             subheader={c.subheader}
@@ -217,7 +218,11 @@ export default function PageBuilder({ page, site }) {
                                 />
                             </div>
                             )
-                
+                    
+                     case 'SubscribeBlock':
+                        return (
+                             commonDiv(ContactFormBlock, null, {}, {site_id:site.id})
+                            );
                   
                     default:
                         return(

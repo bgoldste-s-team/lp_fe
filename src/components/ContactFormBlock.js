@@ -45,7 +45,7 @@ const ContactFormBlock = ({
 
     // Make a POST request
     try {
-      // GET THIS NOT HARDCODED TODO
+      // GET THIS NOT HARDCODED TODO 
       let url = `https://csbe.onrender.com/api/sites/${site_id}/contact/`; 
       const response = await fetch(url, {
         method: "POST",
@@ -70,55 +70,60 @@ const ContactFormBlock = ({
   };
 
   if (!site_id) {
-    return null;
+    return <h1> NO SITE ID</h1>
+    // return null;
   }
   return (
-    <div key={key} contentBlockId={contentBlockId} className="scroll-p-0 py-10 px-4 space-y-4 flex flex-col items-center">
-      <h2 className={headerClasses}>Contact</h2>
-      <div className="form-control w-full max-w-xs ">
-        <form onSubmit={handleSubmit}>
-          <label className="label">
-            <span className="label-text">Name</span>
-          </label>
-          <input
-            type="text"
+    <div key={key} contentBlockId={contentBlockId} className="scroll-p-0 space-y-4 flex flex-col items-center bg-primary text-primary-content ">
+      
+    <div className={`hero min-h-[70vh] p-0  `} 
+// style={{backgroundImage: `url(${image_link})`}}
+>
+  {/* <div className="hero-overlay bg-opacity-0"></div> */}
 
-            className="input input-bordered w-full max-w-xs"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          />
-          <label className="label">
-            <span className="label-text">Email</span>
-          </label>
-          <input
-            type="email"
+
+  <div className="hero-content p-0  mt-0 flex flex-col text-center ">
+    
+    <div className="flex flex-col space-y-2 max-w-xl ">
+
+    <p className="max-w-xl uppercase font-semibold">{subheader}</p>
+      <h1 className=" text-5xl font-bold ">{header} </h1>
+     </div>
+
+
+      <p className="max-w-2xl px-2">{body?.slice(0,200)}</p>
+      
+      <div className="space-x-2">
+        <div className="form-control w-full ">
+        <label className='py-2'>Join <strong>200+ people</strong> on our waitlist and <strong>unlock 25% off</strong>.</label>
+          <form onSubmit={handleSubmit} className='flex flex-row gap-2'>
+           
             
-            className="input input-bordered w-full max-w-xs"
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          />
-          <label className="label">
-            <span className="label-text">Phone Number</span>
-          </label>
-          <input
-            type="phone"
             
-            className="input input-bordered w-full max-w-xs"
-            value={formData.phone_number}
-            onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
-          />
-          <label className="label">
-            <span className="label-text">Message</span>
-          </label>
-          <textarea
-            className="textarea textarea-bordered textarea-lg w-full max-w-xs"
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          ></textarea>
-          <button type="submit" className="btn btn-primary  btn-block mt-2">Submit</button>
-        </form>
-        {feedback && <div className="alert my-4">{feedback}</div>}
+            <input
+              type="email"
+              
+              className="input  bg-neutral-content text-neutral input-bordered w-full max-w-xs"
+              value={formData.email}
+              placeholder="me@awesomeidea.com"
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            />
+            
+            <button type="submit" className="btn btn-md btn-secondary   ">Join Waitlist</button>
+          </form>
+          {feedback && <div className="alert bg-neutral-content text-neutral  my-4">{feedback}</div>}
+        </div>
+        {/* <input className="input input-bordered join-item text-black" placeholder="Email"/> */}
+        {/* <button className="btn  btn-secondary join-item ">Request Access</button> */}
       </div>
+
+
+
+  </div>
+
+</div>
+     
+     
     </div>
   );
 };
