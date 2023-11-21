@@ -16,6 +16,7 @@
    const currentUrl = `https://${site.deployment_url}/${page.slug}`
      console.log("LAYOUT:", pageTitle, "~", pageDescription, "~", firstImageUrl,  site , page)
      console.log(page)
+    // console.log({ children })
     return (
       <>
         <Head>
